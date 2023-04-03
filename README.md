@@ -1,13 +1,1 @@
-# parser-perek
-Для того, чтобы в докер контейнере были необходимые питоновские библиотеки, я сделал так. как показано в этой инструкции - 
-https://stackoverflow.com/questions/67887138/how-to-install-packages-in-airflow-docker-compose
-т.е. я заменил в docker-compose.yaml в самом начале следующие строки
-image: ${AIRFLOW_IMAGE_NAME:-apache/airflow:2.1.0}
-на build .
-т.е. он просто строит новый имедж с файла докерфайл, который основан на airflow:2.1.0, но помимо этого еще качает все необходимые библиотеки с requirements.txt
-необходимо залить новую библиотеку псикопг (постргре) в реквайрментс
-а еще нужно сделать заливку csv в постгре!!!
-чтобы все заработало нужно прописать в терминале находясь в папке git-compose up
-айрфлоу будет в localhost:8080
-postgre - host внутри докерских .ру нужно прописывать как postgre(не локалхост)
-а еще нужно поставить расписание - каждый  день
+Делаем docker-compose up, далее заходим в airflow http://localhost:8080/ и заходим в admin/connections  - тут создаем следующим параметр (conn_id: postgres_localhost, conn_type : postgres, host:postgres, port:5432, login:airflow, password:airflow). Запускаем парсер - могут не сработать таски products_parser, т.к. перек блокирует айпишник парсинга - можем сделать make Success, чтобы цвет стал зеленым, так же может не сработать content_parser (тоже делаем зеленым)). В итоге с готового csv-шника запишутся главные 2 таблицы в бд - fast_perek_datamart и long_perek_datamart. fast -  инфа о ценах, long - инфа о продуктах.
