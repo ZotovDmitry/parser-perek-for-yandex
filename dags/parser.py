@@ -19,7 +19,7 @@ attributes = ['name','price','url','little_cat','big_cat','start_timestamp','sho
 variables = {
     'link_cat':'https://www.perekrestok.ru/cat/c/150/ovosi',
     'block_class':'div.sc-dlfnbm.ldVxnE',
-    'url_one':'a.sc-fFucqa.dUNCjf.product-card__link',
+    'url_one':'a.sc-dQoVA.fvoiIk.product-card__link',
     'get_url':'href',
     'img_url_one':'img.product-card__image',
     'get_img':'src',
@@ -90,7 +90,7 @@ class Client:
 
     def parse_page(self, text: str,little_cat,big_cat):
         soup = bs4.BeautifulSoup(text,'lxml')
-        container = soup.select('div.sc-hJJRrs.fDnHgx')
+        container = soup.select('div.sc-dWddBi.fwoXnq')
         for id,block in enumerate(container,start=1):
             self.parse_block(block=block,little_cat=little_cat,big_cat=big_cat,id=id)
 

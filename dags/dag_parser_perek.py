@@ -41,7 +41,7 @@ def csv_to_postgre():
     execute_values(conn, df, 'products_perek')
 
 with DAG(
-    dag_id='dagg2',
+    dag_id='dag_parser_perek',
     schedule_interval='0 */12 * * *',
     start_date=pendulum.datetime(2021, 1, 1, tz="UTC"),
     catchup=False,
